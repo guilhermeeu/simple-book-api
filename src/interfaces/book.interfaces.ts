@@ -10,3 +10,7 @@ export interface ibook {
   rating: number;
   documentID?: string;
 }
+
+export interface ideleteBook {
+  bookDocId: string;
+}

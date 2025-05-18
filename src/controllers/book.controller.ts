@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { ibook } from "../interfaces/book.interfaces";
+import type { ibook, ideleteBook } from "../interfaces/book.interfaces";
 import BookModel from "../models/book.model";
 import { deleteBookSchema } from "../schemas/book.schemas";
 import { ZodError } from "zod";
@@ -16,7 +16,7 @@ export default class BookController {
 
     try {
       await this.bookModel.createBook(newBookData);
-      response.status(201).json({ message: "Dados enviados com sucesso!" });
+      response.status(201).json({ message: "Data sent successfully!" });
     } catch (error) {
       response
         .status(500)
@@ -30,7 +30,14 @@ export default class BookController {
 
   delete = async (request: Request, response: Response): Promise<void> => {
     try {
-      const { bookDocId } = deleteBookSchema.parse(request.body);
+      const { bookDocId }: ideleteBook = request.body;
+
+      if (typeof bookDocId != "string") {
+        response.status(203).json({
+          message: "INVALID ID",
+        });
+      }
+
       const wasDeleted = await this.bookModel.deleteBookById(bookDocId);
       response.status(200).json({
         message: wasDeleted
@@ -38,12 +45,6 @@ export default class BookController {
           : "The book has already been deleted or the id is invalid",
       });
     } catch (error) {
-      if (error instanceof ZodError) {
-        response.status(400).json({
-          message: "error with book id parameter",
-          error: error.errors,
-        });
-      }
       response.status(500).json({
         message: "Possible database error occurred",
         error,
