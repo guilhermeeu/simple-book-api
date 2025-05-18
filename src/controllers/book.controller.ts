@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import type { ibook, ideleteBook } from "../interfaces/book.interfaces";
 import BookModel from "../models/book.model";
-import { deleteBookSchema } from "../schemas/book.schemas";
 import { ZodError } from "zod";
 export default class BookController {
   bookModel = new BookModel();
