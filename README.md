@@ -31,7 +31,7 @@ Bookie é um projeto simples de API REST para gerenciar livros, usando Firebase 
 - **POST /** — Adicionar um novo livro  
 - **GET /** — Listar todos os livros  
 - **DELETE /delete** — Deletar um livro (enviar `bookDocId` no body)  
-- **PUT /update/** — Atualizar um livro (enviar os dados no body, incluindo `documentID`)  
+- **PUT /update** — Atualizar um livro (enviar os dados no body, incluindo `documentID`)  
 
 ---
 
