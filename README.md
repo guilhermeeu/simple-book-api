@@ -40,7 +40,7 @@ Bookie é um projeto simples de API REST para gerenciar livros, usando Firebase 
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/theguilhermex/Book---api
-   cd bookie
+   git clone https://github.com/guilhermeeu/simple-book-api
+   cd simple-book-api
 
    ``` 
